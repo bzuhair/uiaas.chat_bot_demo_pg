@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const devMode = process.env.NODE_ENV === 'development';
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './index.html',
   filename: 'index.html',
@@ -13,13 +15,9 @@ const config = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash:4].min.js',
+    filename: '[name].[chunkhash:4].js',
+    chunkFilename: '[name].[chunkhash:4].js',
     publicPath: '/'
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
   },
   module: {
     rules: [
@@ -40,7 +38,12 @@ const config = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.html$/,
@@ -70,54 +73,7 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     HtmlWebpackPluginConfig,
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:4].css',
-      chunkFilename: '[id].css',
-    }),
   ]
 };
-
-config.devServer = {
-  // historyApiFallback: true,
-  historyApiFallback: {
-    index: '/',
-  },
-  contentBase: './dist',
-  publicPath: '/',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-  },
-  proxy: {
-    '/api': {
-      target: 'https://uat-uiaas.synapsefi.com',
-      secure: false,
-      changeOrigin: true,
-      pathRewrite: { '^/login': '' }
-    },
-    '/v3': {
-      target: 'https://uat-uiaas.synapsefi.com',
-      secure: false,
-      changeOrigin: true
-    },
-    '/v3.1': {
-      target: 'https://uat-api.synapsefi.com',
-      secure: false,
-      changeOrigin: true
-    },
-    '/webhooks': {
-      target: 'https://uat-uiaas.synapsefi.com',
-      secure: false,
-      changeOrigin: true
-    },
-    '/v1': {
-      target: 'https://uat-uiaas.synapsefi.com',
-      secure: false,
-      changeOrigin: true
-    },
-  }
-};
-
 
 module.exports = config;
