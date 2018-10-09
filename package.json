@@ -4,7 +4,7 @@
   "description": "React Redux Starter ---",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack -p --config webpack.prod.js",
     "server-start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -49,6 +49,7 @@
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.9"
   }
