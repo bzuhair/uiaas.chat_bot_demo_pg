@@ -1,2 +1,2 @@
-import app from './app';
-import style from './src/sass/main.scss';
+import './app';
+import './src/sass/main.scss';
