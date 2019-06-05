@@ -11,6 +11,24 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    const receiveMessage = (e) => {
+      console.log(e.data);
+    };
+    window.addEventListener('message', receiveMessage, false);
+  }
+
+
+  componentDidMount = () => {
+    const updatePublicKey = () => 'public_key_qWCwNJcVPT2jMY105s7K6bUDm3gixoXkf94ZrR8F';
+    const updateOauthKey = () => 'oauth_snMDtxJzhaLR13BIEAFNSiqjdXkYZ0uvowpyrKC4';
+    const updateUserId = () => '5cdca3d814ddee0064a05b17';
+    window.SynapseMain({ updatePublicKey, updateOauthKey, updateUserId });
+    console.log(document.getElementById('the_iframe').style.display);
+  }
+
+  componentDidUpdate = () => {
+    document.getElementById('the_iframe').style.display;
+    console.log(document.getElementById('the_iframe').style.display);
   }
 
   render() {
@@ -25,7 +43,7 @@ class Main extends Component {
         <Header />
         <div className="main-left-child">
           <div className="welcome">Welcome to the Bank Logins demo.</div>
-          <button id="iframe-btn" className="iframe-btn" type="button">Link an account </button>
+          <button id="link-button-iframe" className="iframe-btn" type="button">Link an Account </button>
           <AccountList accounts={accounts} />
         </div>
         <div className="main-right-child" style={{ float: 'right' }}>

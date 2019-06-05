@@ -1,6 +1,6 @@
 .account-list-container
   font-family: Khula
-  max-width: 738px
+  width: 789px
   margin-top: 20%
   @media only screen and (max-width: 600px) 
     margin-top: 56px
@@ -23,21 +23,22 @@
 .list-right
   display: flex
   width: 100%
+  align-items: center
   @media only screen and (max-width: 600px)
     flex-direction: column
-    margin-bottom: 10px
+    display: inline
 
 .list-item
   display: flex
   flex-direction: row
-  align-items: baseline
-  @media only screen and (max-width: 600px)
-    align-items: center
+  align-items: center
 
 .list-logo
   margin-right: 12px
+  width: 33.3px
   @media only screen and (max-width: 600px)
     margin-right: 8px
+    width: 37.3px
 
 .list-info
   max-width: 580px
@@ -62,3 +63,25 @@
     fill: #b3b3b3
     width: 8px
     height: 9px
+    // margin: 206px 0 48px
+
+.bank-logo-container
+  padding-right: 12px
+  width: 33.3px
+  height: 33.3px
+
+.bank-logo
+  width: 33.3px
+  height: 33.3px
+
+.bank-logo-empty
+  width: 34px
+  height: 34px
+  border-radius: 50%
+  display: inline-block
+  background-color: #dadada
+
+.loading
+  color: #999999
+  font-family: Khula
+  font-size: 24px
