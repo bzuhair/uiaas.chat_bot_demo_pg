@@ -55,28 +55,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.1/foundation.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 
-  <script src="https://s3.us-east-2.amazonaws.com/uiaas-best-banking-dashboard/js/iframe.js"></script>
+  <script src="https://synapse-bl-chatbot.s3-us-west-1.amazonaws.com/js/iframe.js"></script>
 </head>
 
 <body class="light-mode">
   <script>
-    var updatePublicKey = function () {
-      // return 'public_key_n7YOZjuGemJ9cPWBKQLNMH2h0iaU1X0v5CrdgAIx';
-      return 'public_key_qWCwNJcVPT2jMY105s7K6bUDm3gixoXkf94ZrR8F'
-    }
-    var updateOauthKey = function () {
-      return 'oauth_snMDtxJzhaLR13BIEAFNSiqjdXkYZ0uvowpyrKC4'
-      // return 'oauth_y4NKwCgfj2QF1svkoV5pqHuU7Im8OXaxZTAtd0hL';
-    }
-    Synapse.create({
+    function SynapseMain(config){
+      Synapse.create({
       defaultPath: 'BANK_LOGINS',
-      // userId: '5b5f95dcf122e319740dbc76',
-      userId: '5cdca3d814ddee0064a05b17',
-      // chatBot: true, // set to true if you want to enable chatbot
-      buttonId: 'iframe-btn', // include button's id and don't include chatBot in Synapse.create argument to open product via button
-      generatePublicKey: updatePublicKey,
-      generateOauthKey: updateOauthKey
+      buttonId: 'link-button-iframe', // include button's id and don't include chatBot in Synapse.create argument to open product via button
+      generatePublicKey: config.updatePublicKey,
+      generateOauthKey: config.updateOauthKey,
+      generateUserId: config.updateUserId,
     });
+    }
+    
   </script>
   <div id="app"></div>
 </body>
