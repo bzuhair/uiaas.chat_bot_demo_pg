@@ -11,10 +11,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    const receiveMessage = (e) => {
-      console.log(e.data);
-    };
-    window.addEventListener('message', receiveMessage, false);
   }
 
 
