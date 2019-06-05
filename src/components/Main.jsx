@@ -41,13 +41,15 @@ class Main extends Component {
     return (
       <div className="main-container">
         <Header />
-        <div className="main-left-child">
-          <div className="welcome">Welcome to the Bank Logins demo.</div>
-          <button id="link-button-iframe" className="iframe-btn" type="button">Link an Account </button>
-          <AccountList accounts={accounts} />
-        </div>
-        <div className="main-right-child" style={{ float: 'right' }}>
-          <div><img className="bank-gif" src={bank} alt="gif" /></div>
+        <div className="content-container">
+          <div className="main-left-child">
+            <div className="welcome">Welcome to the Bank Logins demo.</div>
+            <button id="link-button-iframe" className="iframe-btn" type="button">Link an account </button>
+            <AccountList accounts={accounts} />
+          </div>
+          <div className="main-right-child" style={{ float: 'right' }}>
+            <div><img className="bank-gif" src={bank} alt="gif" /></div>
+          </div>
         </div>
       </div>
     );

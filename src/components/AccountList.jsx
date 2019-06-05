@@ -34,7 +34,7 @@ class AccountList extends Component {
     const { nodes, loading } = this.state;
     return (
       <div className="account-list-container">
-        <div className="title">Linked Accounts</div>
+        <div className="title">Linked accounts</div>
         {loading
           ? <div className="loading">Loading accounts...</div>
           : (
@@ -66,7 +66,7 @@ class AccountList extends Component {
                             <div className="list-left"><img className="list-logo" src={node.info.bank_logo} alt="logo" /></div>
                             <div className="list-right">
                               <span className="list-info">{node.info.account_num} - {node.info.class} - {node.info.bank_name} </span>
-                              <div style={{ width: '50%' }}><Linked /><span className="list-date">Linked {moment(node.timeline[0].date).format('MM/DD/YYYY')}</span></div>
+                              <div className="list-content"><Linked /><span className="list-date">Linked {moment(node.timeline[0].date).format('MM/DD/YYYY')}</span></div>
                             </div>
                           </div>
                         );
