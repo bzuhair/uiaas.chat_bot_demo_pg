@@ -4,6 +4,7 @@ import moment from 'moment';
 import Linked from '../svg/Linked';
 import fetchNodes from '../services/nodeService';
 import updateNewNodes from '../actions/bankLoginActions';
+import utils from '../services/utils';
 
 
 class AccountList extends Component {
@@ -13,6 +14,12 @@ class AccountList extends Component {
       nodes: [],
       loading: true
     };
+    const receiveMessage = (e) => {
+      if (e.data.message === 'close') {
+        this.getNodes();
+      }
+    };
+    window.addEventListener('message', receiveMessage, false);
   }
 
   componentDidMount = () => {
@@ -25,7 +32,7 @@ class AccountList extends Component {
       .then((response) => {
         // sets all nodes in redux
         props.updateNewNodes(response.data.nodes);
-        this.setState({ nodes: response.data.nodes, loading: false });
+        this.setState({ nodes: (response.data.nodes).slice(0, 3), loading: false });
       });
   }
 
@@ -54,6 +61,7 @@ class AccountList extends Component {
                     <div>
                       {nodes.map((node, idx) => {
                         // const name = item.bank_name;
+                        const listText = utils.capitalizeOnlyFirstChar(`${node.info.account_num} - ${node.info.class} - ${node.info.bank_name}`);
                         let border = '';
                         let padding = '';
                         if (idx !== 0) {
@@ -65,7 +73,7 @@ class AccountList extends Component {
                           <div className="list-item" key={node.bank_name} style={{ borderTop: border, paddingTop: padding }}>
                             <div className="list-left"><img className="list-logo" src={node.info.bank_logo} alt="logo" /></div>
                             <div className="list-right">
-                              <span className="list-info">{node.info.account_num} - {node.info.class} - {node.info.bank_name} </span>
+                              <span className="list-info">{listText} </span>
                               <div className="list-content"><Linked /><span className="list-date">Linked {moment(node.timeline[0].date).format('MM/DD/YYYY')}</span></div>
                             </div>
                           </div>

@@ -11,10 +11,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    const receiveMessage = (e) => {
-      console.log(e.data);
-    };
-    window.addEventListener('message', receiveMessage, false);
   }
 
 
@@ -23,12 +19,10 @@ class Main extends Component {
     const updateOauthKey = () => 'oauth_snMDtxJzhaLR13BIEAFNSiqjdXkYZ0uvowpyrKC4';
     const updateUserId = () => '5cdca3d814ddee0064a05b17';
     window.SynapseMain({ updatePublicKey, updateOauthKey, updateUserId });
-    console.log(document.getElementById('the_iframe').style.display);
   }
 
   componentDidUpdate = () => {
     document.getElementById('the_iframe').style.display;
-    console.log(document.getElementById('the_iframe').style.display);
   }
 
   render() {
