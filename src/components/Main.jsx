@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import bank from '../assets/bank.gif';
 
 import Header from './Header';
 import AccountList from './AccountList';
@@ -40,13 +41,13 @@ class Main extends Component {
     return (
       <div className="main-container">
         <Header />
-        <div className="left-child" style={{ display: 'inline-block' }}>
+        <div className="main-left-child">
           <div className="welcome">Welcome to the Bank Logins demo.</div>
           <button id="link-button-iframe" className="iframe-btn" type="button">Link an Account </button>
           <AccountList accounts={accounts} />
         </div>
-        <div className="right-child" style={{ float: 'right' }}>
-          <div style={{ width: '490px', height: '510px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Animation</div>
+        <div className="main-right-child" style={{ float: 'right' }}>
+          <div><img className="bank-gif" src={bank} alt="gif" /></div>
         </div>
       </div>
     );

@@ -3,6 +3,11 @@ import React, { PureComponent } from 'react';
 import Logo from '../svg/Logo';
 
 class Header extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <div className="Header">

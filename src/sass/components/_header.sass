@@ -1,14 +1,25 @@
 .Header
-  margin-top: 40px
+  margin-top: 27px
+  align-items: center
+  display: flex
   .left-child, .right-child
     display: inline-block
     font-size: 24px
+    @media only screen and (max-width: 600px) 
+      font-size: 16px
 
-  // .left-child
-  //   float: left
+  .left-child
+    flex-grow: 1
     
   .right-child
-    float: right
-    margin-top: 15px
+    .link-1, .link-2
+      color: #000000
     .link-2
       margin-left: 90px
+      @media only screen and (max-width: 600px)
+        margin-left: 46px
+
+.logo  
+  @media only screen and (max-width: 600px) 
+    height: 30px
+    margin-left: -30px

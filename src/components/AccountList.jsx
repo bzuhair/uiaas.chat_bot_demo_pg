@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { fetchNodes } from '../services/nodeService';
+import Linked from '../svg/Linked';
+import fetchNodes from '../services/nodeService';
 import updateNewNodes from '../actions/bankLoginActions';
 
 
@@ -30,7 +31,6 @@ class AccountList extends Component {
 
 
   render() {
-    const { accounts } = this.props;
     const { nodes, loading } = this.state;
     return (
       <div className="account-list-container">
@@ -62,10 +62,12 @@ class AccountList extends Component {
                         }
 
                         return (
-                          <div style={{ borderTop: border, paddingTop: padding }}>
-                            <span className="bank-logo-container"><img className="bank-logo" src={node.info.bank_logo} alt="logo" /></span>
-                            <span style={{ width: '580px', display: 'inline-block' }}>{node.info.account_num} - {node.info.class} - {node.info.bank_name} </span>
-                            <span>Linked {moment(node.timeline[0].date).format('MM/DD/YYYY')}</span>
+                          <div className="list-item" key={node.bank_name} style={{ borderTop: border, paddingTop: padding }}>
+                            <div className="list-left"><img className="list-logo" src={node.info.bank_logo} alt="logo" /></div>
+                            <div className="list-right">
+                              <span className="list-info">{node.info.account_num} - {node.info.class} - {node.info.bank_name} </span>
+                              <div style={{ width: '50%' }}><Linked /><span className="list-date">Linked {moment(node.timeline[0].date).format('MM/DD/YYYY')}</span></div>
+                            </div>
                           </div>
                         );
                       })

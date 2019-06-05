@@ -1,10 +1,69 @@
 .account-list-container
-  max-width: 738px
+  font-family: Khula
+  width: 789px
+  margin-top: 20%
+  @media only screen and (max-width: 600px) 
+    margin-top: 56px
   .title
+    margin-bottom: 36px
     font-size: 34px
     font-weight: 600
     color: #000000
-    margin: 206px 0 48px
+    @media only screen and (max-width: 600px) 
+      font-size: 22px
+      margin-bottom: 26px
+
+.list
+  border-left: 6px solid rgb(0, 0, 0)
+  padding: 0px 18.3px
+  @media only screen and (max-width: 600px) 
+    border-left: 3px solid rgb(0, 0, 0)
+    padding: 0px 12.4px
+
+.list-right
+  display: flex
+  width: 100%
+  align-items: center
+  @media only screen and (max-width: 600px)
+    flex-direction: column
+    display: inline
+
+.list-item
+  display: flex
+  flex-direction: row
+  align-items: center
+
+.list-logo
+  margin-right: 12px
+  width: 33.3px
+  @media only screen and (max-width: 600px)
+    margin-right: 8px
+    width: 37.3px
+
+.list-info
+  max-width: 580px
+  width: 100%
+  font-family: Khula
+  font-size: 24px
+  @media only screen and (max-width: 600px)
+    font-size: 16px
+
+.list-date
+  font-family: Khula
+  font-size: 24px
+  @media only screen and (max-width: 600px)
+    font-size: 14px
+    color: #b3b3b3
+
+.link-icon
+  margin-right: 9px
+  width: 27px
+  @media only screen and (max-width: 600px)
+    margin-right: 4px
+    fill: #b3b3b3
+    width: 8px
+    height: 9px
+    // margin: 206px 0 48px
 
 .bank-logo-container
   padding-right: 12px
@@ -14,10 +73,6 @@
 .bank-logo
   width: 33.3px
   height: 33.3px
-
-.list
-  border-left: 'solid 6px #000000'
-  padding-left: 18px
 
 .bank-logo-empty
   width: 34px
