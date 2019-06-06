@@ -5,6 +5,7 @@ import Linked from '../svg/Linked';
 import fetchNodes from '../services/nodeService';
 import updateNewNodes from '../actions/bankLoginActions';
 import utils from '../services/utils';
+import Circle from '../svg/Circle';
 
 
 class AccountList extends Component {
@@ -50,10 +51,12 @@ class AccountList extends Component {
                 {nodes.length === 0
                   ? (
                     <div>
-                      <div>
-                        <span className="bank-logo-empty" />
-                        <span style={{ display: 'inline-block' }}>No linked accounts</span>
-                        <span>Click on Link an account </span>
+                      <div className="list-item" style={{ borderBottom: '1px solid rgb(134, 134, 134)', paddingbottom: '18px' }}>
+                        <Circle />
+                        <div className="list-right">
+                          <span className="list-info" id="list-info">No linked accounts</span>
+                          <div className="list-content" id="list-content"><Linked /><span className="list-date">Click on Link an account </span></div>
+                        </div>
                       </div>
                     </div>
                   )
