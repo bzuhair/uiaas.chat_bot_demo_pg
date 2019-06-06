@@ -19,12 +19,10 @@ class Main extends Component {
     const updateOauthKey = () => 'oauth_snMDtxJzhaLR13BIEAFNSiqjdXkYZ0uvowpyrKC4';
     const updateUserId = () => '5cdca3d814ddee0064a05b17';
     window.SynapseMain({ updatePublicKey, updateOauthKey, updateUserId });
-    console.log(document.getElementById('the_iframe').style.display);
   }
 
   componentDidUpdate = () => {
     document.getElementById('the_iframe').style.display;
-    console.log(document.getElementById('the_iframe').style.display);
   }
 
   render() {
@@ -37,13 +35,15 @@ class Main extends Component {
     return (
       <div className="main-container">
         <Header />
-        <div className="main-left-child">
-          <div className="welcome">Welcome to the Bank Logins demo.</div>
-          <button id="link-button-iframe" className="iframe-btn" type="button">Link an Account </button>
-          <AccountList accounts={accounts} />
-        </div>
-        <div className="main-right-child" style={{ float: 'right' }}>
-          <div><img className="bank-gif" src={bank} alt="gif" /></div>
+        <div className="content-container">
+          <div className="main-left-child">
+            <div className="welcome">Welcome to the Bank Logins demo.</div>
+            <button id="link-button-iframe" className="iframe-btn" type="button">Link an account </button>
+            <AccountList accounts={accounts} />
+          </div>
+          <div className="main-right-child" style={{ float: 'right' }}>
+            <div><img className="bank-gif" src={bank} alt="gif" /></div>
+          </div>
         </div>
       </div>
     );
